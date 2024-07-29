@@ -1,5 +1,6 @@
 // Importiert die Modellklasse ErrorViewModel
-using Bulky.Models;
+using BulkyBook.Models;
+
 
 // Importiert die MVC-Bibliothek
 using Microsoft.AspNetCore.Mvc;
@@ -8,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 // Definiert den Namespace für den Controller
-namespace BulkyDataAccess.Controllers
+namespace BulkyBookWeb.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     // Definiert den HomeController, der von der Controller-Basis-Klasse erbt
     public class HomeController : Controller
     {

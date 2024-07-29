@@ -1,7 +1,7 @@
-﻿using Bulky.Models;  // Importiert die Modelle aus dem Namespace Bulky.Models
+﻿using BulkyBook.Models;  // Importiert die Modelle aus dem Namespace Bulky.Models
 using Microsoft.EntityFrameworkCore;  // Importiert die Entity Framework Core Bibliothek
 
-namespace Bulky.DataAccess.Data
+namespace BulkyBook.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext  // Definiert eine Klasse, die von DbContext erbt
     {

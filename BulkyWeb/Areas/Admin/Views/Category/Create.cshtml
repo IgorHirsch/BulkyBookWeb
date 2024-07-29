@@ -8,7 +8,7 @@
     - shadow: Bootstrap-Klasse, die einen Schatteneffekt hinzufügt.
     - border-0: Bootstrap-Klasse, die den Rand entfernt.
     - mt-4: Bootstrap-Klasse, die einen oberen Rand (Margin Top) von 4 Einheiten hinzufügt.
--->
+    -->
 <div class="card shadow border-0 mt-4">
 
     <!-- Kopfbereich der Karte -->
@@ -21,7 +21,7 @@
         - ml-0: Bootstrap-Klasse, die den linken Rand (Margin Left) auf 0 setzt.
         - py-3: Bootstrap-Klasse, die einen vertikalen Innenabstand (Padding Y) von 3 Einheiten hinzufügt.
     -->
-    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+    <div class="card-header bg-dark bg-gradient ml-1 py-2">
 
         <!-- Zeilencontainer für flexibles Layout -->
         <!--
@@ -42,11 +42,11 @@
                 <!-- Überschrift der Karte -->
                 <!--
                     <h2>: HTML-Element für eine zweite Überschrift.
-                    class="text-white py-2":
-                    - text-white: Bootstrap-Klasse, die die Textfarbe weiß setzt.
+                    class="text-black py-2":
+                    - text-black: Bootstrap-Klasse, die die Textfarbe schwarz setzt.
                     - py-2: Bootstrap-Klasse, die einen vertikalen Innenabstand (Padding Y) von 2 Einheiten hinzufügt.
                 -->
-                <h2 class="text-white py-2">Delete Category</h2>
+                <h2 class="text-white py-2">Create Category</h2>
             </div>
         </div>
     </div>
@@ -60,30 +60,22 @@
     -->
     <div class="card-body p-4">
 
-        <!-- Formular zur Löschung einer Kategorie -->
+        <!-- Formular zur Erstellung einer neuen Kategorie -->
         <!--
             <form>: HTML-Element zur Erstellung eines Formulars.
             method="post": Gibt an, dass das Formular die Methode POST verwendet, um Daten zu senden.
+            class="row": Bootstrap-Klasse, die eine Zeile für ein flexibles Grid-Layout erstellt.
         -->
-        <form method="post">
-
-            <!-- Verstecktes Eingabefeld für die Kategorie-ID -->
-            <!--
-                <input>: HTML-Eingabefeld.
-                asp-for="Id": Razor-Tag-Hilfsprogramm, das das Eingabefeld an die Eigenschaft "Id" des Modells bindet.
-                hidden: Versteckt das Eingabefeld.
-            -->
-            <input asp-for="Id" hidden />
+        <form method="post" class="row">
 
             <!-- Formularcontainer mit Rand und Innenabstand -->
             <!--
                 <div>: Ein Block-Container-Element.
-                class="border p-3 mt-4":
+                class="border p-3":
                 - border: Bootstrap-Klasse, die einen Rand hinzufügt.
                 - p-3: Bootstrap-Klasse, die einen Innenabstand (Padding) von 3 Einheiten hinzufügt.
-                - mt-4: Bootstrap-Klasse, die einen oberen Rand (Margin Top) von 4 Einheiten hinzufügt.
             -->
-            <div class="border p-3 mt-4">
+            <div class="border p-3">
 
                 <!-- Eingabefeld für den Namen der Kategorie -->
                 <!--
@@ -99,13 +91,12 @@
                     <!--
                         <input>: HTML-Element für ein Eingabefeld.
                         asp-for="Name": Tag-Hilfsprogramm, das das Eingabefeld an die Eigenschaft "Name" des Modells bindet.
-                        disabled: Deaktiviert das Eingabefeld, um Änderungen zu verhindern.
                         class="form-control border-0 shadow":
                         - form-control: Bootstrap-Klasse, die das Eingabefeld formatiert.
                         - border-0: Bootstrap-Klasse, die den Rand des Eingabefelds entfernt.
                         - shadow: Bootstrap-Klasse, die einen Schatteneffekt hinzufügt.
                     -->
-                    <input asp-for="Name" disabled class="form-control border-0 shadow" />
+                    <input asp-for="Name" class="form-control bg-body border-0 shadow" />
 
                     <!-- Beschriftung für das Eingabefeld "Name" -->
                     <!--
@@ -113,7 +104,15 @@
                         asp-for="Name": Tag-Hilfsprogramm, das das Label an die Eigenschaft "Name" des Modells bindet.
                         class="ms-2": Bootstrap-Klasse, die einen linken Innenabstand (Margin Start) von 2 Einheiten hinzufügt.
                     -->
-                    <label asp-for="Name" class="ms-2"></label>
+                    <label asp-for="Name" class="ms-2 text-primary "></label>
+
+                    <!-- Validierungsnachricht für das Eingabefeld "Name" -->
+                    <!--
+                        <span>: HTML-Element für einen Inline-Container.
+                        asp-validation-for="Name": Tag-Hilfsprogramm, das Validierungsnachrichten für die Eigenschaft "Name" des Modells anzeigt.
+                        class="text-danger": Bootstrap-Klasse, die die Textfarbe rot setzt.
+                    -->
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <!-- Eingabefeld für die Anzeigereihenfolge der Kategorie -->
@@ -130,13 +129,12 @@
                     <!--
                         <input>: HTML-Element für ein Eingabefeld.
                         asp-for="DisplayOrder": Tag-Hilfsprogramm, das das Eingabefeld an die Eigenschaft "DisplayOrder" des Modells bindet.
-                        disabled: Deaktiviert das Eingabefeld, um Änderungen zu verhindern.
                         class="form-control border-0 shadow":
                         - form-control: Bootstrap-Klasse, die das Eingabefeld formatiert.
                         - border-0: Bootstrap-Klasse, die den Rand des Eingabefelds entfernt.
                         - shadow: Bootstrap-Klasse, die einen Schatteneffekt hinzufügt.
                     -->
-                    <input asp-for="DisplayOrder" disabled class="form-control border-0 shadow" />
+                    <input asp-for="DisplayOrder" class="form-control bg-body border-0 shadow" />
 
                     <!-- Beschriftung für das Eingabefeld "DisplayOrder" -->
                     <!--
@@ -144,19 +142,27 @@
                         asp-for="DisplayOrder": Tag-Hilfsprogramm, das das Label an die Eigenschaft "DisplayOrder" des Modells bindet.
                         class="ms-2": Bootstrap-Klasse, die einen linken Innenabstand (Margin Start) von 2 Einheiten hinzufügt.
                     -->
-                    <label asp-for="DisplayOrder" class="ms-2"></label>
+                    <label asp-for="DisplayOrder" class="ms-2 text-primary"></label>
+
+                    <!-- Validierungsnachricht für das Eingabefeld "DisplayOrder" -->
+                    <!--
+                        <span>: HTML-Element für einen Inline-Container.
+                        asp-validation-for="DisplayOrder": Tag-Hilfsprogramm, das Validierungsnachrichten für die Eigenschaft "DisplayOrder" des Modells anzeigt.
+                        class="text-danger": Bootstrap-Klasse, die die Textfarbe rot setzt.
+                    -->
+                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
                 </div>
 
                 <!-- Container für die Formularaktionen -->
                 <!--
                     <div>: Ein Block-Container-Element.
-                    class="row mt-3":
+                    class="row pt-2":
                     - row: Bootstrap-Klasse, die eine Zeile für ein flexibles Grid-Layout erstellt.
-                    - mt-3: Bootstrap-Klasse, die einen oberen Rand (Margin Top) von 3 Einheiten hinzufügt.
+                    - pt-2: Bootstrap-Klasse, die einen oberen Innenabstand (Padding Top) von 2 Einheiten hinzufügt.
                 -->
-                <div class="row mt-3">
+                <div class="row pt-2">
 
-                    <!-- Spaltencontainer für den Lösch-Button -->
+                    <!-- Spaltencontainer für den Absende-Button -->
                     <!--
                         <div>: Ein Block-Container-Element.
                         class="col-6 col-md-3":
@@ -169,12 +175,12 @@
                         <!--
                             <button>: HTML-Element für einen Button.
                             type="submit": Gibt an, dass der Button das Formular absendet.
-                            class="btn btn-danger form-control":
+                            class="btn btn-primary form-control":
                             - btn: Bootstrap-Klasse für Buttons.
-                            - btn-danger: Bootstrap-Klasse für einen roten, als gefährlich markierten Button.
+                            - btn-primary: Bootstrap-Klasse für einen primären Button (blau).
                             - form-control: Bootstrap-Klasse, die den Button als Formularsteuerung formatiert.
                         -->
-                        <button type="submit" class="btn btn-danger form-control">Delete</button>
+                        <button type="submit" class="btn btn-primary form-control">Create</button>
                     </div>
 
                     <!-- Spaltencontainer für den "Back to List"-Button -->
@@ -217,5 +223,3 @@
         <partial name="_ValidationScriptsPartial" />
     }
 }
-
-

@@ -5,13 +5,13 @@
     <meta charset="utf-8" /> <!-- Zeichencodierung auf UTF-8 setzen -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsives Design -->
     <!-- Titel der Webseite, mit dynamischem Titel aus ViewData -->
-    <title>@ViewData["Title"] - BulkyWeb</title>
+    <title>@ViewData["Title"] - BulkyBookWeb</title>
 
     <!-- Einbindung von Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
     <!-- Einbindung der benutzerdefinierten CSS-Datei mit Versions-Append für Cache-Busting -->
-    <link rel="stylesheet" href="~/BulkyWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BulkyBookWeb.styles.css" asp-append-version="true" />
 
     <!-- Einbindung der Bootstrap Icons Bibliothek -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -21,11 +21,16 @@
 
     <!-- Einbindung einer weiteren benutzerdefinierten CSS-Datei mit Versions-Append -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</head>
-<body>
+
+    <!-- Futuristic Neumorphic CSS Styles -->
+
+
+
+</head >
+<body data-bs-theme=dark>
     <!-- Header-Bereich mit Navigation -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
             <!-- Container für die Navigationselemente -->
             <div class="container-fluid">
                 <!-- Link zur Startseite mit Markenzeichen -->
@@ -42,16 +47,27 @@
                     <ul class="navbar-nav flex-grow-1">
                         <!-- Link zur Startseite -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <!-- Link zur Kategorie-Seite -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Category" asp-action="Index">Category</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <!-- Link zur Datenschutz-Seite -->
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+
+
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Content Managment
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+                                </li>
+
+                            </ul>
+                        
                     </ul>
                 </div>
             </div>
@@ -70,8 +86,8 @@
     </div>
 
     <!-- Footer-Bereich der Seite -->
-    <footer class="border-top footer bg-black text-muted">
-        <div class="text-center">
+    <footer class="border-top footer  text-muted">
+        <div>
             <!-- Footer-Text mit einem Herz-Icon -->
             Made with <i class="bi bi-heart-fill"></i> by DotNetMastery
         </div>

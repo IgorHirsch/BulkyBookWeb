@@ -134,6 +134,9 @@
     --bs-form-invalid-border-color: #e52527;
 }
 
+
+
+
 [data-bs-theme=dark] {
     color-scheme: dark;
     --bs-body-color: #dee2e6;
@@ -189,6 +192,13 @@
     --bs-form-invalid-color: #ef7c7d;
     --bs-form-invalid-border-color: #ef7c7d;
 }
+
+
+
+
+
+
+
 
 *,
 *::before,
@@ -2397,7 +2407,7 @@ progress {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #f0f5fa;
+    background-color: #202121;
     background-clip: padding-box;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
