@@ -1,206 +1,59 @@
 ﻿@model List<Category>
 
-<!-- Hauptcontainer für die Karte -->
-<!--
-    <div>: Ein Block-Container-Element.
-    class="card shadow border-0 mt-4":
-    - card: Bootstrap-Klasse für eine Kartenkomponente.
-    - shadow: Bootstrap-Klasse, die einen Schatteneffekt hinzufügt.
-    - border-0: Bootstrap-Klasse, die den Rand entfernt.
-    - mt-4: Bootstrap-Klasse, die einen oberen Rand (Margin Top) von 4 Einheiten hinzufügt.
--->
-<div class="card shadow border-0 mt-4">
-
-    <!-- Kopfbereich der Karte -->
-    <!--
-        <div>: Ein Block-Container-Element.
-        class="card-header bg-secondary bg-gradient ml-0 py-3":
-        - card-header: Bootstrap-Klasse für den Kopfbereich einer Karte.
-        - bg-secondary: Bootstrap-Klasse, die eine sekundäre Hintergrundfarbe hinzufügt.
-        - bg-gradient: Bootstrap-Klasse, die einen Farbverlauf zum Hintergrund hinzufügt.
-        - ml-0: Bootstrap-Klasse, die den linken Rand (Margin Left) auf 0 setzt.
-        - py-3: Bootstrap-Klasse, die einen vertikalen Innenabstand (Padding Y) von 3 Einheiten hinzufügt.
-    -->
-    <div class="card-header bg-dark bg-gradient ml-1 py-2">
-
-        <!-- Zeilencontainer für flexibles Layout -->
-        <!--
-            <div>: Ein Block-Container-Element.
-            class="row": Bootstrap-Klasse, die eine Zeile für ein flexibles Grid-Layout erstellt.
-        -->
+<div class="card shadow  border-0 mt-4">
+    <div class="card-header  bg-body bg-gradient ml-0 py-3">
         <div class="row">
-
-            <!-- Spaltencontainer, um die Überschrift zentriert anzuzeigen -->
-            <!--
-                <div>: Ein Block-Container-Element.
-                class="col-12 text-center":
-                - col-12: Bootstrap-Klasse, die eine Spalte erstellt, die die gesamte Breite (12 Einheiten) einnimmt.
-                - text-center: Bootstrap-Klasse, die den Text zentriert.
-            -->
-            <div class="col-12 text-center">
-
-                <!-- Überschrift der Karte -->
-                <!--
-                    <h2>: HTML-Element für eine zweite Überschrift.
-                    class="text-white py-2":
-                    - text-white: Bootstrap-Klasse, die die Textfarbe weiß setzt.
-                    - py-2: Bootstrap-Klasse, die einen vertikalen Innenabstand (Padding Y) von 2 Einheiten hinzufügt.
-                -->
+            <div class="col-12 text-center ">
                 <h2 class="text-white py-2">Category List</h2>
             </div>
         </div>
     </div>
-
-    <!-- Hauptinhalt der Karte -->
-    <!--
-        <div>: Ein Block-Container-Element.
-        class="card-body p-4":
-        - card-body: Bootstrap-Klasse, die den Hauptinhalt einer Karte definiert.
-        - p-4: Bootstrap-Klasse, die einen Innenabstand (Padding) von 4 Einheiten hinzufügt.
-    -->
-    <div class="card-body p-4">
-
-        <!-- Zeilencontainer für den oberen Bereich der Karte -->
-        <!--
-            <div>: Ein Block-Container-Element.
-            class="row pb-3":
-            - row: Bootstrap-Klasse, die eine Zeile für ein flexibles Grid-Layout erstellt.
-            - pb-3: Bootstrap-Klasse, die einen unteren Innenabstand (Padding Bottom) von 3 Einheiten hinzufügt.
-        -->
+    <div class="card-body bg-body p-4">
         <div class="row pb-3">
-
-            <!-- Leere linke Spalte -->
-            <!--
-                <div>: Ein Block-Container-Element.
-                class="col-6":
-                - col-6: Bootstrap-Klasse, die eine Spalte erstellt, die 6 von 12 Einheiten einnimmt.
-            -->
             <div class="col-6">
             </div>
-
-            <!-- Rechte Spalte mit einem "Create New Category"-Button -->
-            <!--
-                <div>: Ein Block-Container-Element.
-                class="col-6 text-end":
-                - col-6: Bootstrap-Klasse, die eine Spalte erstellt, die 6 von 12 Einheiten einnimmt.
-                - text-end: Bootstrap-Klasse, die den Text am rechten Rand ausrichtet.
-            -->
             <div class="col-6 text-end">
-
-                <!-- Link zum Erstellen einer neuen Kategorie -->
-                <!--
-                    <a>: HTML-Element für einen Link.
-                    asp-controller="Category": Tag-Hilfsprogramm, das den Link mit dem Controller "Category" verbindet.
-                    asp-action="Create": Tag-Hilfsprogramm, das den Link mit der Aktion "Create" verbindet.
-                    class="btn btn-primary":
-                    - btn: Bootstrap-Klasse für Buttons.
-                    - btn-primary: Bootstrap-Klasse für einen blauen, primären Button.
-                -->
                 <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-
-                    <!-- Symbol für den Button -->
-                    <!--
-                        <i>: HTML-Element für ein Symbol.
-                        class="bi bi-plus-circle": Bootstrap-Icons-Klasse für ein Plus-Kreis-Symbol.
-                    -->
                     <i class="bi bi-plus-circle"></i>  Create New Category
                 </a>
             </div>
         </div>
 
-        <!-- Tabelle zur Anzeige der Kategorien -->
-        <!--
-            <table>: HTML-Element für eine Tabelle.
-            class="table table-bordered table-striped":
-            - table: Bootstrap-Klasse für Tabellen.
-            - table-bordered: Bootstrap-Klasse, die der Tabelle Ränder hinzufügt.
-            - table-striped: Bootstrap-Klasse, die der Tabelle abwechselnd gestreifte Zeilen hinzufügt.
-        -->
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <!-- Tabellenkopf für den Namen der Kategorie -->
                     <th>
                         Category Name
                     </th>
-                    <!-- Tabellenkopf für die Anzeigereihenfolge -->
                     <th>
                         Display Order
                     </th>
-                    <!-- Leerer Tabellenkopf für Aktionen -->
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Iteration über die Kategorien im Modell -->
-                <!-- 
-                    foreach (var obj in Model.OrderBy(u => u.DisplayOrder)):
-                        Razor - Syntax zur Iteration über die Kategorien, sortiert nach der Anzeigereihenfolge. 
-                -->
-                    @foreach(var obj in Model.OrderBy(u => u.DisplayOrder))
+                @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
                 {
                     <tr>
-                        <!-- Tabellenzelle für den Namen der Kategorie -->
-            <td>@obj.Name</td>
-            <!-- Tabellenzelle für die Anzeigereihenfolge -->
-            <td>
-                    @obj.DisplayOrder
-            </td>
-            <!-- Tabellenzelle für die Aktionsbuttons -->
-            <td>
-                <!-- Container für die Aktionsbuttons -->
-                <!--
-                    <div>: Ein Block-Container-Element.
-                    class="w-75 btn-group": Bootstrap-Klasse für eine Gruppe von Buttons mit einer Breite von 75%.
-                    role="group": WAI-ARIA-Attribut zur Definition einer Button-Gruppe.
-                -->
-                <div class="w-75 btn-group" role="group">
-
-                    <!-- Link zum Bearbeiten einer Kategorie -->
-                    <!--
-                        <a>: HTML-Element für einen Link.
-                        asp-controller="Category": Tag-Hilfsprogramm, das den Link mit dem Controller "Category" verbindet.
-                        asp-action="Edit": Tag-Hilfsprogramm, das den Link mit der Aktion "Edit" verbindet.
-                        asp-route-id="@obj.Id": Tag-Hilfsprogramm, das die Kategorie-ID als Route-Parameter setzt.
-                        class="btn btn-primary mx-2":
-                        - btn: Bootstrap-Klasse für Buttons.
-                        - btn-primary: Bootstrap-Klasse für einen blauen, primären Button.
-                        - mx-2: Bootstrap-Klasse, die einen horizontalen Außenabstand (Margin X) von 2 Einheiten hinzufügt.
-                    -->
-                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                        <!-- Symbol für den Bearbeiten-Button -->
-                        <!--
-                            <i>: HTML-Element für ein Symbol.
-                            class="bi bi-pencil-square": Bootstrap-Icons-Klasse für ein Stift-Symbol.
-                        -->
-                        <i class="bi bi-pencil-square"></i> Edit
-                    </a>
-
-                    <!-- Link zum Löschen einer Kategorie -->
-                    <!--
-                        <a>: HTML-Element für einen Link.
-                        asp-controller="Category": Tag-Hilfsprogramm, das den Link mit dem Controller "Category" verbindet.
-                        asp-action="Delete": Tag-Hilfsprogramm, das den Link mit der Aktion "Delete" verbindet.
-                        asp-route-id="@obj.Id": Tag-Hilfsprogramm, das die Kategorie-ID als Route-Parameter setzt.
-                        class="btn btn-danger mx-2":
-                        - btn: Bootstrap-Klasse für Buttons.
-                        - btn-danger: Bootstrap-Klasse für einen roten, gefährlichen Button.
-                        - mx-2: Bootstrap-Klasse, die einen horizontalen Außenabstand (Margin X) von 2 Einheiten hinzufügt.
-                    -->
-                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                        <!-- Symbol für den Löschen-Button -->
-                        <!--
-                            <i>: HTML-Element für ein Symbol.
-                            class="bi bi-trash-fill": Bootstrap-Icons-Klasse für ein Mülltonnen-Symbol.
-                        -->
-                        <i class="bi bi-trash-fill"></i> Delete
-                    </a>
-                </div>
-            </td>
-            </tr>
-            }
+                        <td>@obj.Name</td>
+                        <td>
+                            @obj.DisplayOrder
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
 
     </div>
 </div>
+

@@ -16,6 +16,7 @@ namespace BulkyBook.DataAccess.Repository
         // Implementiert die ICategoryRepository-Eigenschaft von IUnitOfWork.
         // Diese Eigenschaft stellt das Repository für die Category-Entitäten bereit.
         public ICategoryRepository Category { get; private set; }
+        public IProductRepository Product { get; private set; }
 
         // Konstruktor, der den ApplicationDbContext injiziert und das CategoryRepository initialisiert.
         public UnitOfWork(ApplicationDbContext db)
@@ -25,6 +26,7 @@ namespace BulkyBook.DataAccess.Repository
             // Initialisiert die Category-Eigenschaft mit einer neuen Instanz von CategoryRepository.
             // Das Repository verwendet denselben ApplicationDbContext.
             Category = new CategoryRepository(_db);
+            Product = new ProductRepository(_db);
         }
 
         // Methode zum Speichern aller Änderungen, die im aktuellen Kontext vorgenommen wurden.
