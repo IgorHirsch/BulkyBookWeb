@@ -1,119 +1,73 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta-Daten zur Dokumenteninformation -->
-    <meta charset="utf-8" /> <!-- Zeichencodierung auf UTF-8 setzen -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsives Design -->
-    <!-- Titel der Webseite, mit dynamischem Titel aus ViewData -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BulkyBookWeb</title>
-
-    <!-- Einbindung von Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-
-    <!-- Einbindung der benutzerdefinierten CSS-Datei mit Versions-Append für Cache-Busting -->
     <link rel="stylesheet" href="~/BulkyBookWeb.styles.css" asp-append-version="true" />
-
-    <!-- Einbindung der Bootstrap Icons Bibliothek -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-    <!-- Einbindung von Toastr CSS für Benachrichtigungen -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-
-    <!-- Einbindung einer weiteren benutzerdefinierten CSS-Datei mit Versions-Append -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" />
 
-    <!-- Futuristic Neumorphic CSS Styles -->
-
-
-
-</head >
-<body data-bs-theme=dark>
-    <!-- Header-Bereich mit Navigation -->
+</head>
+<body data-bs-theme="dark">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
-            <!-- Container für die Navigationselemente -->
             <div class="container-fluid">
-                <!-- Link zur Startseite mit Markenzeichen -->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BulkyWeb</a>
-
-                <!-- Toggler-Button für mobile Navigation -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <!-- Navigationslinks -->
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <!-- Link zur Startseite -->
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
-
-
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Content Managment
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
-                                </li>
-
-                            </ul>
-                        
+                        @if(User.IsInRole(BulkyBook.Utility.SD.Role_Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Content Management
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
-
-    <!-- Hauptinhalt der Seite -->
-    <div class="container  mb-3 pb-3" style="min-height:100vh">
+    <div class="container mb-3 pb-3" style="min-height:100vh">
         <main role="main" class="pb-3">
-            <!-- Partial View für Benachrichtigungen -->
             <partial name="_Notification" />
-
-            <!-- Hauptinhalt, der in den spezifischen Views gerendert wird -->
             @RenderBody()
         </main>
     </div>
-
-    <!-- Footer-Bereich der Seite -->
-    <footer class="border-top footer bg-body shadow text-muted ">
+    <footer class="border-top footer bg-body shadow text-muted">
         <div>
-            <!-- Footer-Text mit einem Herz-Icon -->
-            Made with <i class="bi bi-heart-fill "></i> by DotNetMastery
+            Made with <i class="bi bi-heart-fill"></i> by DotNetMastery
         </div>
     </footer>
-
-    <!-- Einbindung von jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-    <!-- Einbindung von Bootstrap JavaScript Bundle -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Einbindung der benutzerdefinierten JavaScript-Datei mit Versions-Append -->
-    
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js" asp-append-version="true"></script>
-
     <script src="https://cdn.tiny.cloud/1/0ngnhn7lgtfvvcukfjkhxzg4k19d2ncg96d8shieqbxtv7db/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <!-- Abschnitt für zusätzliche Scripts, die in spezifischen Views eingebunden werden können -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

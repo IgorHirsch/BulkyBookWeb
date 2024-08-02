@@ -1,10 +1,12 @@
 ﻿using BulkyBook.Models;  // Importiert die Modelle aus dem Namespace Bulky.Models
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;  // Importiert die Entity Framework Core Bibliothek
 
 namespace BulkyBook.DataAccess.Data
 {
     // Definiert eine Klasse namens ApplicationDbContext, die von der Basisklasse DbContext erbt
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         // Konstruktor, der eine Instanz von DbContextOptions<ApplicationDbContext> als Parameter akzeptiert
         // und diese an den Konstruktor der Basisklasse weiterleitet
@@ -21,11 +23,15 @@ namespace BulkyBook.DataAccess.Data
         // Diese Eigenschaft repräsentiert eine Tabelle in der Datenbank, die Produkt-Objekte enthält
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         // Überschreibt die OnModelCreating-Methode von DbContext, um zusätzliche Konfigurationen für das Modell festzulegen
         //Diese Methode wird überschrieben, um das Modell weiter zu konfigurieren und Seed-Daten (Startdaten) hinzuzufügen,
         //die automatisch in die Datenbank eingefügt werden, wenn die Migrationen ausgeführt werden.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
             // Fügt Seed-Daten für die Kategorie-Entitäten hinzu
             // Diese Daten werden in die Datenbank eingefügt, wenn die Migrationen angewendet werden
             modelBuilder.Entity<Category>().HasData(

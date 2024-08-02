@@ -3,10 +3,13 @@ using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.DataAccess.Data;
 using BulkyBook.Models;
 using Microsoft.AspNetCore.Mvc;
+using BulkyBook.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         // Das IUnitOfWork-Interface wird verwendet, um die Datenzugriffsoperationen zu kapseln.

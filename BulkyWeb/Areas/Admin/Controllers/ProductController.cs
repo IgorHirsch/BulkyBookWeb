@@ -5,11 +5,14 @@ using BulkyBook.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using BulkyBook.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     // Der Controller befindet sich im "Admin"-Bereich
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         // Dependency Injection: IUnitOfWork und IWebHostEnvironment werden in den Konstruktor übergeben
