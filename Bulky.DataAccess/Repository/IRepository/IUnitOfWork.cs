@@ -15,6 +15,8 @@ namespace BulkyBook.DataAccess.Repository.IRepository
         // Eine Eigenschaft, die ein spezielles Repository für Produkte bereitstellt
         IProductRepository Product { get; }
 
+        ICompanyRepository Company { get; }
+
         // Eine Methode, die alle Änderungen speichert (committed), die in der aktuellen Transaktion gemacht wurden
         void Save();
     }
