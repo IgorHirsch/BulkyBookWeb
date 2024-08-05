@@ -17,6 +17,10 @@ namespace BulkyBook.DataAccess.Repository.IRepository
 
         ICompanyRepository Company { get; }
 
+        IShoppingCartRepository ShoppingCart { get; }
+
+        IApplicationUserRepository ApplicationUser { get; }
+
         // Eine Methode, die alle Änderungen speichert (committed), die in der aktuellen Transaktion gemacht wurden
         void Save();
     }

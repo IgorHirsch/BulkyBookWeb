@@ -18,6 +18,8 @@ namespace BulkyBook.DataAccess.Repository
         public ICategoryRepository Category { get; private set; }
         public ICompanyRepository Company { get; private set; }
         public IProductRepository Product { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
 
         // Konstruktor, der den ApplicationDbContext injiziert und das CategoryRepository initialisiert.
         public UnitOfWork(ApplicationDbContext db)
@@ -26,6 +28,8 @@ namespace BulkyBook.DataAccess.Repository
 
             // Initialisiert die Category-Eigenschaft mit einer neuen Instanz von CategoryRepository.
             // Das Repository verwendet denselben ApplicationDbContext.
+            ApplicationUser = new ApplicationUserRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
             Category = new CategoryRepository(_db);
             Product = new ProductRepository(_db);
             Company = new CompanyRepository(_db);
