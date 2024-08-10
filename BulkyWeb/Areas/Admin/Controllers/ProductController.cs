@@ -12,7 +12,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     // Der Controller befindet sich im "Admin"-Bereich
     [Area("Admin")]
-    //[Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         // Dependency Injection: IUnitOfWork und IWebHostEnvironment werden in den Konstruktor übergeben
