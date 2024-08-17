@@ -23,6 +23,7 @@ namespace BulkyBook.DataAccess.Repository.IRepository
 
         IOrderDetailRepository OrderDetail { get; }
         IOrderHeaderRepository OrderHeader { get; }
+        IProductImageRepository ProductImage { get; }
 
         // Eine Methode, die alle Änderungen speichert (committed), die in der aktuellen Transaktion gemacht wurden
         void Save();

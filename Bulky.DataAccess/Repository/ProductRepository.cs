@@ -41,12 +41,12 @@ namespace BulkyBook.DataAccess.Repository
                 objFromDb.Description = obj.Description; // Aktualisiert die Beschreibung des Produkts
                 objFromDb.CategoryId = obj.CategoryId; // Aktualisiert die Kategorie-ID des Produkts
                 objFromDb.Author = obj.Author;       // Aktualisiert den Autor des Produkts
-
+                objFromDb.ProductImages = obj.ProductImages;
                 // Wenn die ImageUrl im übergebenen Produktobjekt nicht null ist, aktualisiert die ImageUrl des Produkts
-                if (obj.ImageUrl != null)
-                {
-                    objFromDb.ImageUrl = obj.ImageUrl;
-                }
+                //if (obj.ImageUrl != null)
+                //{
+                //    objFromDb.ImageUrl = obj.ImageUrl;
+                //}
             }
         }
     }
